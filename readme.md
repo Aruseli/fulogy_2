@@ -27,3 +27,4 @@ PATH_PREFIX="/prefix"
 ## deps
 
 - `.nojekyll` for gh-pages
+- `.gitignore` from wiki
