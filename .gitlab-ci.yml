@@ -1,0 +1,10 @@
+image: node:12
+
+stages:
+  - heroku
+
+heroku:
+  stage: heroku
+  script:
+    - git remote add heroku https://heroku:${HEROKU_TOKEN}@git.heroku.com/${HEROKU_NAME}.git
+    - git push heroku HEAD:master -f
