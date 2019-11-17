@@ -29,6 +29,13 @@ optional
 PATH_PREFIX="/prefix"
 ```
 
+### start local
+
+```sh
+npm i
+PORT=3000 npm run dev
+```
+
 ## deps
 
 - `.nojekyll` for gh-pages
