@@ -10,6 +10,8 @@ import { wrapPage } from '../imports/project/wrap-page';
 import { makeStyles } from '@material-ui/styles';
 import { useGql } from '../imports/deepcase/hasura/use';
 
+import { ExampleStorybook } from 'deepcase-storybook/src/stories/Example.stories';
+
 export const ExampleAuth = () => {
   const auth = useAuth();
   const [result, setResult] = useState({});
@@ -28,7 +30,7 @@ export const ExampleAuth = () => {
     </div>
     <div>
       <button onClick={() => local('a', 'a')}>local('a', 'a')</button>
-    </div>
+    </div> 
     <div>
       <button onClick={() => local('a', 'b')}>local('a', 'b')</button>
       !password
@@ -92,4 +94,5 @@ export default wrapPage(() => (<>
   <ExampleHasura/>
   <ExampleResponsiveImage/>
   <ExampleMui/>
+  <ExampleStorybook/>
 </>));

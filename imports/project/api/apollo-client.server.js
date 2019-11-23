@@ -9,5 +9,5 @@ export const apolloClient = generateApolloClient({
   // $flowignore
   secret: process.env.HASURA_GQL_SECRET,
   // $flowignore
-  ssl: process.env.HASURA_GQL_SSL,
+  ssl: !!+process.env.HASURA_GQL_SSL,
 });

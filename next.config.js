@@ -7,6 +7,9 @@ const Dotenv = require('dotenv-webpack')
 const withPlugins = require("next-compose-plugins");
 const withCSS = require("@zeit/next-css");
 const optimizedImages = require("next-optimized-images");
+const withTM = require('next-transpile-modules');
+
+const TM = process.env.TM ? process.env.TM.split(',') : [];
 
 module.exports = withPlugins(
   [
@@ -18,7 +21,10 @@ module.exports = withPlugins(
         }
       }
     ],
-    [optimizedImages]
+    [optimizedImages],
+    [withTM, {
+      transpileModules: [...TM]
+    }],
   ],
   {
     webpack: config => {
