@@ -1,5 +1,5 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "deepcase-react-web-app",
   "appName": "react-web-app",
   "bundledWebRuntime": false,
   "npmClient": "npm",
