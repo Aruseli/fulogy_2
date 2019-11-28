@@ -46,9 +46,12 @@ PORT=3000 npm run dev
 Install [ionic android dependencies](https://ionicframework.com/docs/installation/android)
 
 ```sh
+# run locally android emulator
 npm run build
 npm run export
 npm run add-android # ionic cap add android
 ln -s ~/android-studio/ ./.next/android-studio
 npm run open-android # ionic cap open android
+# copy for publish into device
+npm run copy-android # ionic cap copy android
 ```

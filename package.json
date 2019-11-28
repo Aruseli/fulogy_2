@@ -6,7 +6,8 @@
     "export": "next export -o docs",
     "start": "next start -p $PORT",
     "add-android": "ionic cap add android",
-    "open-android": "ionic cap open android"
+    "open-android": "ionic cap open android",
+    "copy-android": "ionic cap copy android"
   },
   "keywords": [],
   "author": "",
