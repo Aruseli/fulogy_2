@@ -40,3 +40,15 @@ PORT=3000 npm run dev
 
 - `.nojekyll` for gh-pages
 - `.gitignore` from wiki
+
+## android
+
+Install [ionic android dependencies](https://ionicframework.com/docs/installation/android)
+
+```sh
+npm run build
+npm run export
+npm run add-android # ionic cap add android
+ln -s ~/android-studio/ ./.next/android-studio
+npm run open-android # ionic cap open android
+```

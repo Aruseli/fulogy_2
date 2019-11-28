@@ -1,0 +1,9 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "react-web-app",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "docs",
+  "linuxAndroidStudioPath": "./.next/android-studio/bin/studio.sh",
+  "cordova": {}
+}

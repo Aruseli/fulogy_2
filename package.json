@@ -3,7 +3,10 @@
   "scripts": {
     "dev": "next -p $PORT",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "export": "next export -o docs",
+    "start": "next start -p $PORT",
+    "add-android": "ionic cap add android",
+    "open-android": "ionic cap open android"
   },
   "keywords": [],
   "author": "",
@@ -11,6 +14,8 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.3",
     "@apollo/react-ssr": "^3.1.3",
+    "@capacitor/android": "^1.3.0",
+    "@capacitor/core": "1.3.0",
     "@material-ui/core": "^4.6.1",
     "@material-ui/styles": "^4.6.0",
     "@zeit/next-css": "^1.0.1",
@@ -61,6 +66,7 @@
     "@babel/core": "^7.7.2",
     "@babel/preset-flow": "^7.0.0",
     "@babel/runtime": "^7.7.2",
+    "@capacitor/cli": "1.3.0",
     "jimp": "^0.8.5",
     "responsive-loader": "^1.2.0"
   },

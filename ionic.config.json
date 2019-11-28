@@ -1,0 +1,7 @@
+{
+  "name": "react-web-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
