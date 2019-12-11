@@ -51,7 +51,7 @@ export const DesktopOne = () => {
   const [props, setSpring] = useSpring(() => ({ xy: [0, 0], config: { mass: 1, tension: 350, friction: 40 } }));
   const { trigger } = useContext(AnaliticsContext);
   const [dialogOpenCall, setDialogOpenCall] = useState(false);
-  const [dialogOpenLight, setDialogOpenLight] = useState(true);
+  const [dialogOpenLight, setDialogOpenLight] = useState(false);
 
   const onClickLight = () => {
     setDialogOpenLight(!dialogOpenLight);

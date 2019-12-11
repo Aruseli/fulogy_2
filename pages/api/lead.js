@@ -39,6 +39,6 @@ export default async (req: ClientRequest, res: ServerResponse) => {
       ...req.body,
     }
   })
-  console.log(JSON.stringify({body: req.body, response}, null, 2));
+  // console.log(JSON.stringify({body: req.body, response}, null, 2));
   res.send(response);
 };

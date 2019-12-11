@@ -77,7 +77,7 @@ export const FormDialog = ({open, onClose, title, button, onSubmit}) => {
     setOpenThanks(!openThanks);
     trigger('thanks');
     onSubmit && onSubmit()
-    await console.log({
+    await axios.post('/api/lead',{
       name: nameValue,
       phone: phoneValue,
       page: document.location && (document.location.origin + document.location.pathname),
