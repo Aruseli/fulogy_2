@@ -25,15 +25,21 @@ const useStyle = makeStyles((theme) => ({
   },
   containedButton: {
     backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(135deg, rgba(244,211,121,1) 28%, rgba(241,195,85,1) 51%)'
+  },
+  textButton: {
+    color: '#fff',
+    '&:hover': {
+      color: theme.palette.secondary.main
+    }
   }
 }))
 
 const logo = require('../../public/images/Logo.png?resize&size=600'); 
 export const phone = require('../../public/images/icon/call-white.svg'); 
 
-export const Logo = ({width}) => {
-  const classes = useStyle();
-  return <img src={logo} alt='логотип Fulogy' width={width}/>
+export const Logo = ({...props}) => {
+  
+  return <img src={logo} alt='логотип Fulogy' {...props}/>
 }
 
 export const Light = () => {
@@ -48,15 +54,13 @@ export const Light = () => {
   </div>)
 }
 
-export const OutlinedButton = () => {
+export const OutlinedButton = ({...props}) => {
   const classes = useStyle();
 
-  return <Button variant="outlined" size="small" className={classes.gradient}>Заказать звонок</Button>
+  return <Button {...props} variant="outlined" size="small" className={classes.gradient}>Заказать звонок</Button>
 }
 
-export const Contacts = ({icon}) => {
-  const classes = useStyle();
-
+export const Contacts = ({icon, ...props}) => {
   return (<>
     <div>
       <Button variant="text" startIcon={
@@ -66,22 +70,26 @@ export const Contacts = ({icon}) => {
       </Button>
     </div>
     <div>
-      <OutlinedButton />
+      <OutlinedButton {...props} />
     </div>
   </>
   )
 }
 
-export const ContainedButton = () => {
+export const ContainedButton = ({...props}) => {
   const classes = useStyle();
 
-  return <Button variant="contained" size="large" className={classes.containedButton}>Заказать светильники</Button>
+  return <Button variant="contained" size="large" {...props} className={classes.containedButton}>Заказать светильники</Button>
 }
 
-export const TextButton = ({...props}) => {
+export const TextButton = ({children, ...props}) => {
   const classes = useStyle();
-
+  
   return <Button variant="text" size="small" endIcon={
     <ChevronRight />
-  } {...props}>Узнать больше</Button>
+  } {...props}>
+    <Typography variant='body1' component='div' className={classes.textButton}>
+      {children}
+    </Typography>
+  </Button>
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 
 import {
   Grid,
@@ -8,10 +8,17 @@ import {
 
 import {BlockYellowLine} from '../../widgets/block-with-yellow-line';
 import {ContainedButton} from '../../widgets/small-elements';
+import {FormDialog} from '../../widgets/formDialog';
+
+import { Context as AnaliticsContext } from '../../project/analitics';
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    padding: '64px 32px'
+    padding: '64px 32px',
+    backgroundRepeat: 'no-repeat',
+    backgroundImage: `url(${vawe})`,
+    backgroundPosition: 'bottom',
+    backgroundSize: '100%'
   },
   typographyBody1: {
     color: theme.palette.primary.light
@@ -24,8 +31,17 @@ const useStyle = makeStyles((theme) => ({
   }
 }))
 
+const vawe = require('../../../public/images/icon/vawe-first.svg');
+
 export const DesktopTwo = () => {
   const classes = useStyle();
+  const { trigger } = useContext(AnaliticsContext);
+  const [dialogOpenLight, setDialogOpenLight] = useState(false);
+
+  const onClickLight = () => {
+    setDialogOpenLight(!dialogOpenLight);
+    trigger('lightRequest2');
+  }
 
   return (<div className={classes.root}>
     <Grid 
@@ -40,7 +56,7 @@ export const DesktopTwo = () => {
         </Typography>
       </Grid>
       <Grid item md={4}>
-        <BlockYellowLine style={{height: '100%'}}>
+        <BlockYellowLine style={{height: '100%', backgroundColor: '#fff'}}>
           <>
             <Typography variant='h3' component='h2' gutterBottom>
               Управляйте светом взмахом руки
@@ -64,7 +80,7 @@ export const DesktopTwo = () => {
         </BlockYellowLine>
       </Grid>
       <Grid item md={4}>
-        <BlockYellowLine style={{height: '100%'}}>
+        <BlockYellowLine style={{height: '100%', backgroundColor: '#fff'}}>
           <>
             <Typography variant='h3' component='h2' gutterBottom>
               Только свет, ничего лишнего
@@ -87,7 +103,7 @@ export const DesktopTwo = () => {
         </BlockYellowLine>
       </Grid>
       <Grid item md={4}>
-        <BlockYellowLine style={{height: '100%'}}>
+        <BlockYellowLine style={{height: '100%', backgroundColor: '#fff'}}>
           <>
             <Typography variant='h3' component='h2' gutterBottom>
               Лучше светит только Солнце
@@ -109,8 +125,15 @@ export const DesktopTwo = () => {
         </BlockYellowLine>
       </Grid>
       <Grid item>
-        <ContainedButton />
+        <ContainedButton onClick={onClickLight} />
       </Grid>
     </Grid>
+    <FormDialog
+      open={dialogOpenLight}
+      onClose={() => setDialogOpenLight(!dialogOpenLight)}
+      title='Чтобы заказать светильники'
+      button='Заказать светильники'
+      onSubmit={() => trigger('lightThanks2')}
+    />
   </div>)
 }

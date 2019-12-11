@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 
 import {
   Grid,
@@ -8,10 +8,14 @@ import {
 
 import {BlockYellowLine} from '../../widgets/block-with-yellow-line';
 import { ContainedButton } from '../../widgets/small-elements';
+import {FormDialog} from '../../widgets/formDialog';
+
+import { Context as AnaliticsContext } from '../../project/analitics';
 
 const useStyle = makeStyles((theme) => ({
   root: {
-    marginTop: 64
+    marginTop: 64,
+    overflow: 'hidden'
   },
   typographyBody1: {
     color: theme.palette.primary.light
@@ -26,13 +30,22 @@ const useStyle = makeStyles((theme) => ({
 
 export const MobileTwo = () => {
   const classes = useStyle();
+  const { trigger } = useContext(AnaliticsContext);
+  const [dialogOpenLight, setDialogOpenLight] = useState(false);
+
+  const onClickLight = () => {
+    setDialogOpenLight(!dialogOpenLight);
+    trigger('lightRequest2');
+  }
 
   return (<div className={classes.root}>
     <Grid 
       container
+      direction='column'
       justify='center'
-      alignItems='stretch'
+      alignItems='center'
       spacing={4}
+      style={{overflow: 'hidden'}}
     >
       <Grid item md={12}>
         <Typography variant='h1' component='h1' align='center'>
@@ -109,8 +122,15 @@ export const MobileTwo = () => {
         </BlockYellowLine>
       </Grid>
       <Grid item style={{padding: '48px 0'}}>
-        <ContainedButton />
+        <ContainedButton onClick={onClickLight} />
       </Grid>
     </Grid>
+    <FormDialog
+      open={dialogOpenLight}
+      onClose={() => setDialogOpenLight(!dialogOpenLight)}
+      title='Чтобы заказать светильники'
+      button='Заказать светильники'
+      onSubmit={() => trigger('lightThanks1')}
+    />
   </div>)
 }
