@@ -33,15 +33,17 @@ import {FooterMobile} from '../imports/components/mobile/mobile-9';
 
 export default wrapPage(() => (<>
   <Hidden implementation='css' only={['sm', 'xs']}>
-    <DesktopOne /> 
-    <DesktopTwo />
-    <DesktopThree /> 
-    <DesktopFour /> 
-    <DesktopFive />
-    <DesktopSix />
-    <DesktopSeven />
-    <DesktopEight />
-    <Footer />
+    <div style={{maxWidth: 1420, margin: '0 auto'}}>
+      <DesktopOne /> 
+      <DesktopTwo />
+      <DesktopThree /> 
+      <DesktopFour /> 
+      <DesktopFive />
+      <DesktopSix />
+      <DesktopSeven />
+      <DesktopEight />
+      <Footer />
+    </div>
   </Hidden>
   
   <Hidden implementation='css' only={['md', 'lg', 'xl']}>
