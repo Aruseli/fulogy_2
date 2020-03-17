@@ -28,6 +28,7 @@ const useStyle = makeStyles((theme) => ({
   shadowedFont: {
     color: theme.palette.secondary.main,
     textShadow: '0 1px 26px rgba(241, 195, 85, 0.7)',
+    fontSize: 32
   },
   subtitleFonts: {
     color: '#fff',
@@ -100,7 +101,7 @@ export const MobileThree = () => {
         </Grid>
       </Grid>     
     </div>
-    <Container style={{marginTop: 64}} id='pageLinkMob'>
+    <div style={{marginTop: 64}} id='pageLinkMob'>
       <Typography variant='h1' component='h1' gutterBottom align='center'>
         Как работает<br />бесконтактный<br />светильник Fulogy
       </Typography>
@@ -108,19 +109,23 @@ export const MobileThree = () => {
         Вы проводите рукой у датчика, светильник включается. Проводите еще 
         раз – выключается. Это действительно настолько просто!<br />Смотрите:
       </Typography> 
-      <div style={{marginTop: 48 }}>
+      <div style={{
+        margin: '48px auto',
+        width: 'calc((100vw * 1) - 32px)',
+        height: 'calc(100vw * 0.56)'
+      }}>
         <iframe 
           width="100%" 
-          height="315" 
+          height="100%" 
           src="https://www.youtube.com/embed/AgkaT02Z8PI" 
           frameBorder="0" 
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 
           allowFullScreen>
         </iframe>
       </div>
-    </Container>
+    </div>
     <Container>
-      <OpenedBlock style={{marginTop: 48}} title='Удобно'>
+      <OpenedBlock style={{marginTop: 48}} title='Удобно' defaultOpen={true}>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom style={{color: '#fff'}}>
             Удобно
@@ -138,7 +143,7 @@ export const MobileThree = () => {
           </Typography>
         </>
       </OpenedBlock>
-      <OpenedBlock style={{marginTop: 48}} title='Надежно'>
+      <OpenedBlock style={{marginTop: 32}} title='Надежно'>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom style={{color: '#fff'}}>
             Надежно
@@ -155,7 +160,7 @@ export const MobileThree = () => {
           </Typography>
         </>
       </OpenedBlock>
-      <OpenedBlock style={{marginTop: 48}} title='Стильно'>
+      <OpenedBlock style={{marginTop: 32}} title='Стильно'>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom style={{color: '#fff'}}>
             Стильно
@@ -171,8 +176,8 @@ export const MobileThree = () => {
         </>
       </OpenedBlock>
     </Container>
-    <div style={{marginTop: 64, textAlign: 'center'}}>
-      <ContainedButton onClick={onClickLight} />
+    <div style={{marginTop: 64, textAlign: 'center', paddingBottom: 64}}>
+      <ContainedButton onClick={onClickLight} style={{boxShadow: '0 10px 20px 0 rgba(0, 0, 0, 0.2)'}} />
     </div>
     <FormDialog
       open={dialogOpenLight}

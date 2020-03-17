@@ -67,12 +67,10 @@ export const MobileFive = () => {
         style={{padding: '64px 0'}}
         >
         <Grid item xs={12}>
-          <Typography variant='h2' component='h1' gutterBottom align='center' style={{color: '#fff', padding: '0 32px'}}>
-            Сколько стоит бесконтактный светодиодный светильник
+          <Typography variant='h2' component='h1' align='center' style={{color: '#fff'}}>
+            Сколько стоит
           </Typography>  
-          <Typography variant='body1' component='div' align='center' style={{color: '#b4b4b4', padding: '0 32px'}}>
-            Стоимость погонного метра светильника Fulogy составляет <span style={{color: '#f1c355'}}>2000&nbsp;руб.</span>
-          </Typography>  
+          <Typography variant='body1' component='div' align='center' style={{color: '#fff', padding: '0 48px'}}>бесконтактный светодиодный светильник</Typography>
         </Grid>
         <Grid item xs={12} style={{paddingTop: 48}}>
           <Grid 
@@ -81,8 +79,11 @@ export const MobileFive = () => {
             alignItems='center'
           >
             <Grid item xs={10}>
-              <ShadowBlock style={{boxShadow: '15px -15px 0 0 #303c4f'}}>
-                <Typography variant='h3' component='h2' style={{color: '#fff', padding: '32px 32px 0'}}>
+              <ShadowBlock style={{boxShadow: '15px -15px 0 0 #303c4f'}}>       
+                <Typography variant='body1' component='div' align='center' style={{color: '#b4b4b4', padding: '32px 24px'}}>
+                  Стоимость погонного метра светильника Fulogy составляет <span style={{color: '#f1c355'}}>2000&nbsp;руб.</span>
+                </Typography> 
+                <Typography variant='h3' component='h2' style={{color: '#fff', padding: '0 32px'}}>
                   В цену входит:
                 </Typography>
                 <List style={{paddingLeft: 16}}>
@@ -157,7 +158,7 @@ export const MobileFive = () => {
       >
         <Grid item style={{padding: '32px 16px'}}>
           <Typography variant='body1' component='div' style={{color: '#b4b4b4'}}>
-            И, конечно,<br />безупречное освещение рабочей зоны, недостижимое 
+            И, конечно, безупречное освещение рабочей зоны, недостижимое 
             при использовании любых других<br />светодиодных или люминесцентных 
             ламп, а также шикарный дизайн, придающий Вашей кухне<br />
             <span style={{color: '#f1c355'}}>законченный и современный вид.</span>

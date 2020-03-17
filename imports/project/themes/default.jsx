@@ -140,7 +140,7 @@ export const defaultTheme = createMuiTheme({
         color: '#fff'
       },
       outlined: {
-        border: 'transparent',
+        borderColor: '#f1c355',
         color: fontSecondaryColor,
         fontSize: 16,
         '&:active': {

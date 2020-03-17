@@ -10,7 +10,7 @@ import {
 import {
   ContainedButton
 } from '../../widgets/small-elements';
-import {OpenedBlock} from '../../widgets/opened-block';
+import {OpenedBlock, AlwaysOpen} from '../../widgets/opened-block';
 import {FormDialog} from '../../widgets/formDialog';
 
 import { Context as AnaliticsContext } from '../../project/analitics';
@@ -28,10 +28,12 @@ const useStyle = makeStyles((theme) => ({
   shadowedFont: {
     color: theme.palette.secondary.main,
     textShadow: '0 1px 26px rgba(241, 195, 85, 0.7)',
+    fontSize: 32
   },
   subtitleFonts: {
     color: '#fff',
-    paddingTop: 8
+    paddingTop: 8,
+    fontSize: 16
   },
 }))
 
@@ -48,7 +50,7 @@ export const MobileFour = () => {
     trigger('lightRequest4');
   }
 
-  return (<div style={{overflow: 'hidden', marginTop: 64}}>
+  return (<div style={{overflow: 'hidden', marginTop: 0}}>
     <div className={classes.line}>
       <Grid 
         container
@@ -62,26 +64,30 @@ export const MobileFour = () => {
       >
         <Grid item xs={11}>
           <div>
-            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>30 мин</Typography>
+            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>30</Typography>
           </div>
           <div>
-            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>замер</Typography>
+            <Typography variant='body1' component='p' align='center' gutterBottom className={classes.subtitleFonts}>минут замер</Typography>
           </div>
         </Grid>
         <Grid item xs={11}>
           <div>
-            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>48-72 часа</Typography>
+            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>48-72</Typography>
           </div>
           <div>
-            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>изготовление</Typography>
+            <Typography variant='body1' component='p' align='center' gutterBottom className={classes.subtitleFonts}>часа изготовление</Typography>
           </div>
         </Grid> 
         <Grid item xs={11}>
           <div>
-            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>15 мин</Typography>
+            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>
+              <span className={classes.subtitleFonts}>от</span> 30
+              <span className={classes.subtitleFonts}>мин. до</span> 1.5
+              <span className={classes.subtitleFonts}>ч.</span>
+            </Typography> 
           </div>
           <div>
-            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>установка</Typography>
+            <Typography variant='body1' component='p' align='center' gutterBottom className={classes.subtitleFonts}>установка</Typography>
           </div>
         </Grid>
         <Grid item xs={11}>
@@ -100,7 +106,7 @@ export const MobileFour = () => {
       </Typography>
     </div>
     <Container>
-      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title={<>1. Для удобной и безопасной<br />готовки</>}>
+      <OpenedBlock defaultOpen={true} style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title={<>1.<br />Для удобной и безопасной<br />готовки</>}>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom>
             1. Для удобной и безопасной<br />готовки
@@ -120,7 +126,7 @@ export const MobileFour = () => {
           </Typography>
         </>
       </OpenedBlock>
-      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title='2. Для идеального интерьера'>
+      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title={<>2.<br />Для идеального интерьера</>}>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom>
             2. Для идеального интерьера
@@ -139,7 +145,7 @@ export const MobileFour = () => {
           </Typography>
         </>
       </OpenedBlock>
-      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title={<>3. Для повседневного<br />удобства</>}>
+      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title={<>3.<br />Для повседневного<br />удобства</>}>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom>
             3. Для повседневного удобства
@@ -158,7 +164,7 @@ export const MobileFour = () => {
           </Typography>
         </>
       </OpenedBlock>
-      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title='4. Для готовой кухни'>
+      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title={<>4.<br/>Для готовой кухни</>}>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom>
             4. Для готовой кухни
@@ -178,7 +184,7 @@ export const MobileFour = () => {
           </Typography>
         </>
       </OpenedBlock>
-      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title='5. Для легкой установки'>
+      <OpenedBlock style={{marginTop: 48, backgroundColor: '#fff', boxShadow: '0 15px 30px 0 rgba(0,0,0,0.1)',}} title={<>5.<br />Для легкой установки</>}>
         <>
           <Typography variant='h3' component='h2' align='center' gutterBottom>
             5. Для легкой установки
@@ -197,7 +203,7 @@ export const MobileFour = () => {
     </Container>
     <div style={{marginTop: 64, textAlign: 'center', position: 'relative'}}>
       <img src={kitchen} alt='освещение рабочей зоны кухни от Fulogy' style={{marginTop: 32, width: '100%'}} />
-      <ContainedButton style={{position: 'relative', bottom: 23}} onClick={onClickLight} />
+      <ContainedButton style={{position: 'relative', bottom: 23, boxShadow: '0 10px 20px 0 rgba(0, 0, 0, .20)'}} onClick={onClickLight} />
     </div>
     <FormDialog
       open={dialogOpenLight}

@@ -11,6 +11,7 @@ import {
   Logo,
   Light,
   Contacts,
+  OutlinedButton,
   phone,
   ContainedButton,
   TextButton
@@ -28,7 +29,8 @@ const useStyle = makeStyles((theme) => ({
     backgroundSize: 'cover',
     width: '100%',
     height: '100vh',
-    maxHeight: '160vw'
+    maxHeight: '160vw',
+    overflow: 'hidden'
   },
   logoStyle: {
     width: 150,
@@ -74,10 +76,10 @@ export const MobileOne = () => {
     <>
       <div className={classes.root}>
         <div className={classes.cornerImage}>
-          <img src={mobileKit} alt='fulogy' style={{width: '100%'}} />
-            <Typography variant='h4' component='div' style={{position: 'absolute', top: '74%', color: '#b4b4b478', left: '4%'}}>Бесшовный<br />дизайн</Typography>
-            <Typography variant='h4' component='div' style={{position: 'absolute', top: '87%', color: '#b4b4b478', left: '16%'}}>Точно в размер<br />Вашей кухни</Typography>
-            <Typography variant='h4' component='div' style={{position: 'absolute', top: '98%', color: '#b4b4b478', left: '46%'}}>Установим через<br />72 часа</Typography>
+          <img src={mobileKit} alt='fulogy' style={{width: '100%', transform: 'scale(1.1)'}} />
+            <Typography variant='h4' component='div' style={{position: 'absolute', top: '80%', color: '#fff', left: '4%'}}>Бесшовный<br />дизайн</Typography>
+            <Typography variant='h4' component='div' style={{position: 'absolute', top: '93%', color: '#fff', left: '15%'}}>Точно в размер<br />Вашей кухни</Typography>
+            <Typography variant='h4' component='div' style={{position: 'absolute', top: '102%', color: '#fff', left: '46%'}}>Установим через<br /><span style={{color: '#f1c355'}}>72</span> часа</Typography>
         </div>
         <Grid 
           container
@@ -88,7 +90,7 @@ export const MobileOne = () => {
             top: 0,
             left: 0,
             width: '100%',
-            paddingTop: 16,
+            paddingTop: 8,
             paddingLeft: 16,
             paddingRight: 16
           }}
@@ -99,10 +101,10 @@ export const MobileOne = () => {
           <Grid item>
             <Contacts onClick={onClickCall} />
           </Grid>
-          <Grid item xs={12} style={{marginTop: 60}}>
+          <Grid item xs={12} style={{marginTop: 40}}>
             <Light />
           </Grid>
-          <Grid item xs={12} style={{marginTop: 32}}>
+          <Grid item xs={12} style={{marginTop: 24}}>
             <Typography variant='h1' component='h1' style={{color: '#fff'}} align='center'>ровный&ensp;<Typography variant='h1' component='span' color='secondary'>яркий</Typography>&ensp;свет</Typography>
             <Typography variant='h3' component='h2' style={{color: '#fff', marginTop: 8}} align='center'>над рабочим столом по<br />взмаху руки</Typography>
           </Grid>

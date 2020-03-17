@@ -14,6 +14,7 @@ import { Context as AnaliticsContext } from '../../project/analitics';
 
 const useStyle = makeStyles((theme) => ({
   root: {
+    position: 'relative',
     padding: '64px 32px',
     backgroundRepeat: 'no-repeat',
     backgroundImage: `url(${vawe})`,
@@ -28,10 +29,25 @@ const useStyle = makeStyles((theme) => ({
     position: 'absolute',
     top: 0,
     right: 0,
+  },
+  imageUp: {
+    position: 'absolute',
+    top: -32,
+    right: -24,
+    width: 300,
+  },
+  imageDown: {
+    position: 'absolute',
+    top: 24,
+    right: -40,
+    width: 250,
+    transform: 'rotate(-10deg)'
   }
 }))
 
 const vawe = require('../../../public/images/icon/vawe-first.svg');
+const hand = require('../../../images/1-1.png?resize&size=600');
+const lamp = require('../../../images/2-1.png?resize&size=600');
 
 export const DesktopTwo = () => {
   const classes = useStyle();
@@ -44,6 +60,8 @@ export const DesktopTwo = () => {
   }
 
   return (<div className={classes.root}>
+    <img src={lamp} alt='fulogy' className={classes.imageUp} />
+    <img src={hand} alt='fulogy' className={classes.imageDown} />
     <Grid 
       container
       justify='center'

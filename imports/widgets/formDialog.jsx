@@ -12,9 +12,21 @@ import {
   Hidden
 } from '@material-ui/core';
 
+import { MuiPhoneNumber, UniformPhone } from './material-ui-phone-number';
+
 import Close from '@material-ui/icons/Close';
 
 import { Context as AnaliticsContext } from '../project/analitics';
+
+import {
+  AutoField,
+  AutoForm,
+  ErrorField,
+  SubmitField,
+  BoolField
+} from 'uniforms-material';
+
+import GuestSchema from '../project/api/schema';
 
 import axios from 'axios';
 import Cookies from 'js-cookie';
@@ -36,14 +48,44 @@ const useStyle = makeStyles(theme => ({
   },
   paperDialog: {
     borderRadius: 10,
-    backgroundColor: '#303c4f'
+    backgroundColor: '#303c4f',
+    '@media(max-width: 420px)': {
+      margin: 16
+    }
   },
   myInputLabel: {
     '&:focus': {
       borderColor: theme.palette.secondary.main 
     }
+  }, 
+  errorMessage: { 
+    '& > *': {
+      position: 'absolute',
+      top: -8,
+      right: 0,
+      padding: 6,
+      borderRadius: 5,
+      boxShadow: '0 2px 10px 0 rgba(23, 23, 23, 0.1)',
+      width: 'initial',
+      backgroundColor: 'rgba(255, 255, 255, 0.5)'
+    }
+  },
+  privacy: {
+    '@media(max-width: 430px)': {
+      fontSize: 12
+    }
+  },
+  dialogContentStyle: {
+    padding: 32, 
+    boxSizing: 'border-box',
+    '@media(max-width: 350px)': {
+      padding: '24px 12px',
+    }
   } 
 }))
+
+const tick = require('../../public/images/icon/tick-border.svg');
+const tickChecked = require('../../public/images/icon/tick-checked-yellow.svg');
 
 const Thanks = () => {
 
@@ -55,6 +97,47 @@ const Thanks = () => {
       </DialogContent>
     </>
   )
+}
+
+const AForma = ({title, button, thanks, trigger, onSubmit}) => {
+  const classes = useStyle();
+  
+  return (
+    <AutoForm 
+      schema={GuestSchema} 
+      onSubmit={async (data) => {
+        onSubmit && onSubmit();
+        await console.log('/api/lead',{ //axios.post
+          name: data.name,
+          phone: data.phone,
+          page: document.location && (document.location.origin + document.location.pathname),
+          pixelId: Cookies.get('__opix_uid'),
+        })
+      }}
+    >
+      <Typography variant='h2' component='h2' align='center' style={{color: '#fff'}}>{title}</Typography>
+      <Typography variant='body1' component="p" align='center' gutterBottom style={{color: '#b4b4b4'}}>Введите свое имя и телефон</Typography>
+      <AutoField variant='outlined' name="name" label={false} placeholder='Ваше имя' />
+      <div style={{position: 'relative', marginTop: 24}}>
+        <UniformPhone variant='outlined' name="phone" value="+7" type="text" />
+        <ErrorField variant='outlined' name="phone">
+          <span style={{color: '#f35454'}}>Поле должно быть заполненно</span>
+        </ErrorField>
+      </div>
+      <div style={{marginTop: 24}}>
+        <BoolField 
+          name='acceptTermsOfUse'
+          icon={<img src={tick} alt='checkbox' className={classes.tickIcon} />}
+          checkedIcon={<img src={tickChecked} alt='checkbox' className={classes.tickIcon} />}
+          label={<span className={classes.privacy} style={{color: '#b4b4b4'}}>Я принимаю условия <br /><a href='/privacy-policy' style={{color: '#f1c355'}} target='_blank'>политики конфиденциальности</a></span>}
+        />
+      </div>
+      <ErrorField variant='outlined' name='acceptTermsOfUse' />
+      <SubmitField fullWidth variant="contained" color="secondary" style={{color: '#fff', marginTop: 24}} size="large">
+        {button}
+      </SubmitField>
+    </AutoForm>
+  );
 }
 
 export const FormDialog = ({open, onClose, title, button, onSubmit}) => {
@@ -77,7 +160,7 @@ export const FormDialog = ({open, onClose, title, button, onSubmit}) => {
     setOpenThanks(!openThanks);
     trigger('thanks');
     onSubmit && onSubmit()
-    await axios.post('/api/lead',{
+    await console.log('/api/lead',{ //axios.post
       name: nameValue,
       phone: phoneValue,
       page: document.location && (document.location.origin + document.location.pathname),
@@ -87,10 +170,10 @@ export const FormDialog = ({open, onClose, title, button, onSubmit}) => {
 
   return(
     <>
-      <Dialog open={open} onClose={onClose} aria-labelledby="form-dialog-title" maxWidth='md' classes={{paper: classes.paperDialog}}>
+      <Dialog open={open} onClose={onClose} CloseClosearia-labelledby="form-dialog-title" maxWidth='md' classes={{paper: classes.paperDialog}}>
         <Hidden implementation='css' only={['md', 'lg', 'xl']}>
           <IconButton
-            aria-label="close"
+            aria-labelclose            
             className={classes.closeButton}
             onClick={onClose}>
             <Close style={{height: 24, width: 24}} />
@@ -98,39 +181,17 @@ export const FormDialog = ({open, onClose, title, button, onSubmit}) => {
           { openThanks 
           ? <Thanks />
           : <>
-            <DialogContent style={{padding: 32, boxSizing: 'border-box'}}>
-              <Typography variant='h2' component='h2' align='center' style={{color: '#fff'}}>{title}</Typography>
-              <Typography variant='body1' component="p" align='center' gutterBottom style={{color: '#b4b4b4'}}>Введите свое имя и телефон</Typography>
-              <div style={{paddingTop: 16}}>
-                <TextField
-                  onChange={(e) => setNameValue(e.target.value)}
-                  value={nameValue}
-                  className={classes.myInputLabel}
-                  placeholder="Имя"
-                  autoFocus
-                  id="name"
-                  type="text"
-                  fullWidth
-                  variant="outlined"
-                  margin="normal"
+            <DialogContent className={classes.dialogContentStyle}>
+              <AForma 
+                  title={title} 
+                  button={button} 
+                  onSubmit={() => {
+                    setOpenThanks(!openThanks);
+                    trigger('thanks');
+                    onSubmit && onSubmit(); 
+                  }}
                 />
-                <TextField
-                  onChange={(e) => setPhoneValue(e.target.value)}
-                  value={phoneValue}
-                  placeholder="Телефон"
-                  required
-                  id="phone"
-                  type="phone"
-                  fullWidth
-                  margin="normal"
-                  variant="outlined"
-                  inputProps={{pattern: "[+]?(\\d[-\\(\\)\\s]*){11}"}}
-                />
-              </div>
             </DialogContent>
-            <DialogActions style={{padding: 24}}>
-              {buttonElement}
-            </DialogActions>
           </>}
         </Hidden>
         <Hidden implementation='css' only={['sm', 'xs']}>
@@ -143,39 +204,17 @@ export const FormDialog = ({open, onClose, title, button, onSubmit}) => {
           { openThanks 
           ? <Thanks />
           : <>
-            <DialogContent style={{padding: '64px 32px', boxSizing: 'border-box'}}>
-              <Typography variant='h2' component='h2' align='center' style={{color: '#fff'}}>{title}</Typography>
-              <Typography variant='body1' component="p" align='center' gutterBottom style={{color: '#b4b4b4'}}>Введите свое имя и телефон</Typography>
-              <div style={{paddingTop: 48}}>
-                <TextField
-                  onChange={(e) => setNameValue(e.target.value)}
-                  value={nameValue}
-                  className={classes.myInputLabel}
-                  placeholder="Имя"
-                  autoFocus
-                  id="name"
-                  type="text"
-                  fullWidth
-                  variant="outlined"
-                  margin="normal"
-                />
-                <TextField
-                  onChange={(e) => setPhoneValue(e.target.value)}
-                  value={phoneValue}
-                  placeholder="Телефон"
-                  required
-                  id="phone"
-                  type="phone"
-                  fullWidth
-                  margin="normal"
-                  variant="outlined"
-                  inputProps={{pattern: "[+]?(\\d[-\\(\\)\\s]*){11}"}}
-                />
-              </div>
+            <DialogContent style={{padding: '64px 32px', boxSizing: 'border-box', zIndex: 22}}>
+              <AForma 
+                title={title} 
+                button={button} 
+                onSubmit={() => {
+                  setOpenThanks(!openThanks);
+                  trigger('thanks');
+                  onSubmit && onSubmit(); 
+                }}
+              />
             </DialogContent>
-            <DialogActions style={{paddingBottom: 48, paddingLeft: 32, paddingRight: 32}}>
-              {buttonElement}
-            </DialogActions>
           </>}
         </Hidden>
       </Dialog>

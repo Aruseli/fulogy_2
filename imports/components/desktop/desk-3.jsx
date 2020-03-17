@@ -28,10 +28,12 @@ const useStyle = makeStyles((theme) => ({
   shadowedFont: {
     color: theme.palette.secondary.main,
     textShadow: '0 1px 26px rgba(241, 195, 85, 0.7)',
+    fontSize: 32
   },
   subtitleFonts: {
     color: '#fff',
-    paddingTop: 8
+    paddingTop: 8,
+    fontSize: 16
   },
   textColor: {
     color: theme.palette.primary.light
@@ -58,11 +60,6 @@ export const DesktopThree = () => {
   return (<>
     <div className={classes.line} 
      onMouseMove={({ currentTarget, pageX: x, pageY: y }) => {
-      // currentTarget - зона на которую навели мышку
-      // нам нужна только разница положения мышки от currentTarget
-      // pageY - положение мышки от верха страницы
-      // offsetTop - положение зоны на которую навели мышки от верха страницы
-      // отнять одно от другого - получаем расстояние мышки от верха зоны
       setSpring({ xy: [x, y - currentTarget.offsetTop] });
     }}
     >
@@ -76,14 +73,10 @@ export const DesktopThree = () => {
           height: 100,
           transform: props.xy.interpolate(itemTrans),
           position: 'absolute',
-          // добавил что бы отсчет начинался от верха, иначе он
-          // почему-то ставит его не в эту точку как начальную координату
           top: 0, left: 0,
         }}
       />
-      {/* <div style={{width: '100%', position: 'relative'}}> */}
-        <img src={letter} style={{width: '46%', position: 'absolute', top: 0, left: 0}} />
-      {/* </div> */}
+      <img src={letter} style={{width: '46%', position: 'absolute', top: 0, left: 0}} />
       <Grid 
         container
         justify='center'
@@ -103,7 +96,7 @@ export const DesktopThree = () => {
         </Grid>
         <Grid item md={3}>
           <div>
-            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>20 км</Typography>
+            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>20 <span style={{fontSize: 32, color: '#f1c355'}}>км</span></Typography>
           </div>
           <div>
             <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>столешниц освещено</Typography>
@@ -148,10 +141,14 @@ export const DesktopThree = () => {
           раз – выключается.<br />Это действительно настолько просто! Смотрите:
         </Typography>   
       </Grid>
-      <Grid item md={6} style={{textAlign: 'center'}}>
+      <Grid item style={{
+        textAlign: 'center',
+        width: 'calc((100vw * 1) * 0.5)',
+        height: 'calc((100vw * 0.56) * 0.5)'    
+      }}>
         <iframe 
           width="100%" 
-          height="315" 
+          height="100%" 
           src="https://www.youtube.com/embed/AgkaT02Z8PI" 
           frameBorder="0" 
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" 

@@ -35,14 +35,14 @@ const useStyle = makeStyles((theme) => ({
     borderRadius: 50,
     backgroundColor: '#f1c355',
     borderColor: theme.palette.primary.light,
-    boxShadow: '0 15px 30px rgba(0,0,0,0.7)'
+    boxShadow: '0 5px 20px rgba(0,0,0,0.3)'
   }
   
 }))
 
-export const OpenedBlock = ({title, children, ...props}) => {
+export const OpenedBlock = ({title, children, defaultOpen=false, ...props}) => {
   const classes = useStyle();
-  const[open, setOpen] = useState(false);
+  const[open, setOpen] = useState(defaultOpen);
 
   const onClick = () => setOpen(!open);
 

@@ -81,8 +81,8 @@ export const MobileSix = () => {
           alignItems='stretch'
         >
           <Grid item style={{padding: '32px 16px'}}>
-            <Typography variant='body1' component='div' style={{color: '#b4b4b4'}}>
-              Разница очевидна. Уже больше <span style={{color: '#000'}}>1500</span> клиентов сделали выбор в пользу современного и 
+            <Typography variant='body1' component='div' >
+              Разница очевидна. Уже больше <span style={{color: '#000', fontWeight: 700}}>1500</span> клиентов сделали выбор в пользу современного и 
               удобного<br/>бесконтактного светодиодного светильника на своей кухне.
             </Typography>
           </Grid>
@@ -101,8 +101,9 @@ export const MobileSix = () => {
           border: '1px solid #efefef',
           boxShadow: '0 15px 30px 0 rgba(0,0,0, 0.1)',
           boxSizing: 'border-box',
-          padding: 32,
-          marginTop: 64
+          padding: '32px 12px',
+          marginTop: 64,
+          marginBottom: 64
         }}>
           <Typography variant='h2' component='h1'>Закажите светильники Fulogy</Typography>
           <List>
@@ -139,8 +140,8 @@ export const MobileSix = () => {
               } style={{paddingLeft: 24}} />
             </ListItem>
           </List>
-          <div style={{padding: '16px 0', textAlign: 'center'}}>
-            <ContainedButton onClick={onClickLight} />
+          <div style={{paddingTop: 16, textAlign: 'center'}}>
+            <ContainedButton onClick={onClickLight} style={{boxShadow: '0 10px 20px 0 rgba(0, 0, 0, 0.2)'}} />
           </div>
         </Grid>
       </Grid> 

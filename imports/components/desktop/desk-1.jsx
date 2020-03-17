@@ -102,9 +102,7 @@ export const DesktopOne = () => {
           <Grid item >
             <Logo className={classes.logoStyle} />
           </Grid>
-          <Grid item >
-            <Light />
-          </Grid>
+          
           <Grid item />
           <Grid item  style={{position: 'relative', left: 48, minWidth: 163}}>
             <Contacts onClick={onClickCall} icon={<img src={phone} alt='контакты fulogy' style={{width: 16}} />}/>
@@ -112,6 +110,7 @@ export const DesktopOne = () => {
         </Grid>
       </Grid>
       <Grid item md={5}>
+        <Light style={{paddingBottom: 16}} />
         <Typography variant='h1' component='h1'>ровный&ensp;<Typography variant='h1' component='span' color='secondary'>яркий</Typography>&ensp;свет</Typography>
         <Typography variant='h3' component='h2' style={{color: '#fff'}} gutterBottom>над рабочим столом по взмаху руки</Typography>
         <Typography variant='body1' component='p' paragraph className={classes.typographyBody1}>
@@ -136,9 +135,9 @@ export const DesktopOne = () => {
     </Grid>
     <div className={classes.cornerImage}>
       <img src={desktopKit} alt='fulogy' style={{width: '100%'}} />
-      <Typography variant='h4' component='div' color='primary.light' style={{position: 'absolute', top: '52%', left: 0}}>Бесшовный дизайн</Typography>
-      <Typography variant='h4' component='div' color='primary.light' style={{position: 'absolute', top: '75%', left: '11%'}}>Точно в размер Вашей кухни</Typography>
-      <Typography variant='h4' component='div' color='primary.light' style={{position: 'absolute', top: '94.5%', left: '32.5%'}}>Установим через 72 часа</Typography>
+      <Typography variant='h4' component='div' style={{position: 'absolute', color: '#fff', top: '52%', left: 0}}>Бесшовный дизайн</Typography>
+      <Typography variant='h4' component='div' style={{position: 'absolute', color: '#fff', top: '75%', left: '11%'}}>Точно в размер Вашей кухни</Typography>
+      <Typography variant='h4' component='div' style={{position: 'absolute', color: '#fff', top: '94.5%', left: '32.5%'}}>Установим через 72 часа</Typography>
     </div>
     <FormDialog
       open={dialogOpenLight}

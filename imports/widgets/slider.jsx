@@ -61,13 +61,12 @@ export const Slider = () => {
   const classes = useStyle();
   const[index, setIndex] = useState(4);
 
-  // const onPrevClick = () => {
-  //   setIndex(index > 0 ? index - 1 : 0);
-  // };
-
-  // const onNextClick = () => {
-  //   setIndex(index == items.length - 1 ? index : index + 1)
-  // };
+  const leftSize = index;
+  const rightSize = items.length - (index + 1);
+  const diff = Math.abs(leftSize - rightSize);
+  
+  const lastRightIndex = (items.length - 1) - (diff / 2);
+  const lastLeftIndex = (diff / 2);
 
   const onPrevClick = () => {
     setIndex(index>0 ? index - 1 : items.length - 1);
@@ -80,9 +79,15 @@ export const Slider = () => {
   return(<>
     <Grid container justify='center' alignItems='stretch' className={classes.root}>
       <Grid item md={6}><Typography variant='h2' component='h1' gutterBottom align='center'>Галерея</Typography></Grid>
+      {/* <Grid item md={12}>leftSize {leftSize} rightSize {rightSize} diff {diff} lastRightIndex {lastRightIndex} lastLeftIndex {lastLeftIndex}</Grid> */}
       <Grid item md={7} style={{position: 'relative', height: '40vw'}}>
-        {items.map((item, i) => (
-          <div key={i} className={classes.items}
+        {items.map((item, _i) => {
+          const i = rightSize < leftSize && _i < lastLeftIndex
+          ? (items.length) + _i :
+          rightSize > leftSize && _i > lastRightIndex
+          ? _i - lastRightIndex - lastLeftIndex - 1 :
+          _i;
+          return <div key={_i} className={classes.items}
             style={{
               position: 'absolute',
               height: '100%',
@@ -91,11 +96,13 @@ export const Slider = () => {
               zIndex: items.length - (i - index < 0 ? index - i : i - index),
               filter: `opacity(${(items.length - (i - index < 0 ? index - i : i - index))*11}%)`,
             }}>
+            {/* <div style={{ position: 'absolute', left: 0, top: -20 }}>i {i} _i {_i}</div>
+            <div style={{ position: 'absolute', right: 0, top: -20 }}>i {i} _i {_i}</div> */}
             <ChildrenResponsive>
               <img src={item.src} alt={item.alt} style={{width: '100%'}} />
             </ChildrenResponsive>
           </div>
-          ))}
+        })}
         </Grid>
       </Grid>
       <Grid container justify='center' alignItems='center'>

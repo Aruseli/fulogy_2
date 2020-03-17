@@ -18,10 +18,10 @@ const useStyle = makeStyles((theme) => ({
     backgroundColor: '#303c4f'
   },
   gradient: {
-      borderImage: 'linear-gradient(135deg, rgba(244,211,121,1) 28%, rgba(241,195,85,1) 51%)',
-      borderImageSlice: 1,
-      borderWidth: 2,
-      borderStyle: 'solid'
+    borderImage: 'linear-gradient(135deg, rgba(244,211,121,1) 28%, rgba(241,195,85,1) 51%)',
+    borderImageSlice: 1,
+    borderWidth: 2,
+    borderStyle: 'solid'
   },
   containedButton: {
     backgroundImage: 'linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0)), linear-gradient(135deg, rgba(244,211,121,1) 28%, rgba(241,195,85,1) 51%)'
@@ -42,22 +42,22 @@ export const Logo = ({...props}) => {
   return <img src={logo} alt='логотип Fulogy' {...props}/>
 }
 
-export const Light = () => {
+export const Light = ({...props}) => {
   const classes = useStyle();
 
-  return (<div style={{textAlign: 'center'}}>
-    <Typography variant='h4' component='span' color='primary.light'>Кухня</Typography>&emsp;
+  return (<div {...props}>
+    <Typography variant='h4' component='span' style={{color: '#fff'}}>Кухня</Typography>&emsp;
     <div className={classes.dash}></div>&emsp;
     <Typography variant='h4' component='span' color='secondary'>Свет</Typography>&emsp;
     <div className={classes.dash}></div>&emsp;
-    <Typography variant='h4' component='span' color='primary.light'>Fulogy</Typography>
+    <Typography variant='h4' component='span' style={{color: '#fff'}}>Fulogy</Typography>
   </div>)
 }
 
 export const OutlinedButton = ({...props}) => {
   const classes = useStyle();
 
-  return <Button {...props} variant="outlined" size="small" className={classes.gradient}>Заказать звонок</Button>
+  return <Button {...props} variant="outlined" size="small" >Заказать звонок</Button>
 }
 
 export const Contacts = ({icon, ...props}) => {

@@ -27,10 +27,12 @@ const useStyle = makeStyles((theme) => ({
   shadowedFont: {
     color: theme.palette.secondary.main,
     textShadow: '0 1px 26px rgba(241, 195, 85, 0.7)',
+    fontSize: 32
   },
   subtitleFonts: {
     color: '#fff',
-    paddingTop: 8
+    paddingTop: 8, 
+    fontSize: 16
   },
   textColor: {
     color: theme.palette.primary.light
@@ -38,7 +40,6 @@ const useStyle = makeStyles((theme) => ({
 }))
 
 export const bgLine = require('../../../images/Photo-4.jpg?resize&size=600');
-// export const desktopWoman = require('../../../images/desktop-kit.png?resize&size=600');
 const vawe = require('../../../public/images/icon/vawe-but.svg');
 
 export const DesktopFour = () => {
@@ -63,26 +64,30 @@ export const DesktopFour = () => {
       >
         <Grid item md={3}>
           <div>
-            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>30 мин</Typography>
+            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>30</Typography>
           </div>
           <div>
-            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>замер</Typography>
+            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>минут замер</Typography>
           </div>
         </Grid>
         <Grid item md={3}>
           <div>
-            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>48-72 часа</Typography>
+            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>48-72</Typography>
           </div>
           <div>
-            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>изготовление</Typography>
+            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>часа изготовление</Typography>
           </div>
         </Grid> 
         <Grid item md={3}>
           <div>
-            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>15 мин</Typography>
+            <Typography variant='h1' component='h3' align='center' className={classes.shadowedFont}>
+              <span className={classes.subtitleFonts}>от</span> 30
+              <span className={classes.subtitleFonts}>мин. до</span> 1.5
+              <span className={classes.subtitleFonts}>ч.</span>
+            </Typography> 
           </div>
           <div>
-            <Typography variant='body1' component='p' align='center' className={classes.subtitleFonts}>установка</Typography>
+            <Typography variant='body1' component='p' align='center' gutterBottom className={classes.subtitleFonts}>установка</Typography>
           </div>
         </Grid>
         <Grid item md={3}>

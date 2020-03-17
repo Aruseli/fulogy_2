@@ -59,7 +59,7 @@ export const MobileTwo = () => {
               Управляйте светом<br />взмахом руки
             </Typography>
             <Typography variant='body1' component='p' paragraph>
-              Признайтесь: Вы об этом мечтали. Небрежный жест – и 
+              Признайтесь:<br />Вы об этом мечтали. Небрежный жест – и 
               ровный свет заливает рабочую поверхность кухни. 
             </Typography>
             <Typography variant='body1' component='p' paragraph>
@@ -92,7 +92,9 @@ export const MobileTwo = () => {
               даже на габаритных кухнях сложной конфигурации. 
             </Typography>
             <Typography variant='body1' component='p' paragraph>
-              Результат? <br />
+              Результат?
+            </Typography>
+            <Typography variant='body1' component='p' paragraph>
               Органичный и стильный внешний вид, неизменно впечатляющий 
               не только гостей, но и Вас самих.
             </Typography>
@@ -115,14 +117,14 @@ export const MobileTwo = () => {
               готовки и великолепные блюда! 
             </Typography>
             <Typography variant='body1' component='p' paragraph>
-              Кроме того, светодиодные светильники 
-              Fulogy светят равномерно, не раздражая глаза микропульсациями.
+              Кроме того, светодиодные <b>светильники 
+              Fulogy</b> светят равномерно, не раздражая глаза микропульсациями.
             </Typography>
           </>
         </BlockYellowLine>
       </Grid>
       <Grid item style={{padding: '48px 0'}}>
-        <ContainedButton onClick={onClickLight} />
+        <ContainedButton onClick={onClickLight} style={{boxShadow: '0 10px 20px 0 rgba(0, 0, 0, 0.2)'}} />
       </Grid>
     </Grid>
     <FormDialog
