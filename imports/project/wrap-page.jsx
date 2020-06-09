@@ -43,10 +43,10 @@ export const wrapPage = (Component: any) => {
     Component: () => {
       return (
         <AnaliticsProvider
-          facebookPixel={process.env.NODE_ENV === 'production' ? '1245714662288364' : null}
-          facebookTimeout={process.env.NODE_ENV === 'production' ? 20000 : null}
-          googleAnalitics={process.env.NODE_ENV === 'production' ? 'UA-56824740-6' : null}
-          yandexMetrika={process.env.NODE_ENV === 'production' ? 56224693 : null}
+          facebookPixel={process.env.NODE_ENV === 'production' ? null : null}
+          facebookTimeout={process.env.NODE_ENV === 'production' ? null : null}
+          googleAnalitics={process.env.NODE_ENV === 'production' ? null : null}
+          yandexMetrika={process.env.NODE_ENV === 'production' ? 64733455 : null}
         >
           <ThemeProvider theme={defaultTheme}>
             <Component />
