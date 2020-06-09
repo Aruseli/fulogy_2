@@ -11,7 +11,7 @@ const useStyle = makeStyles((theme) => ({
     borderRadius: 5,
     overflow: 'hidden',
     boxSizing: 'border-box',
-    padding: '32px 16px',
+    padding: '32px 12px',
     boxShadow: '0 0 0 0 rgba(0,0,0, 0)',
     transition: 'all 1s ease',
     [theme.breakpoints.down('sm')]: {

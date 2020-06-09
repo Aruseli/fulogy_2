@@ -4,9 +4,9 @@ import { createMuiTheme } from "@material-ui/core/styles";
 
 export const fontFamilyCommon = '"Gilroy-Regular", sans-serif';
 export const fontFamilyH2 = '"Gilroy-Semibold", sans-serif';
-export const fontMainColor = '#202835';
-export const fontSecondaryColor = '#f1c355';
-export const fontLightColor = '#b4b4b4';
+export const fontMainColor = '#202835'; //темно-синий
+export const fontSecondaryColor = '#f1c355'; //желтый
+export const fontLightColor = '#b4b4b4'; //серый
 
 const th = createMuiTheme({});
 // Create a theme instance.
@@ -42,6 +42,9 @@ export const defaultTheme = createMuiTheme({
       color: fontMainColor,
       [th.breakpoints.up('md')]: {
         color: '#fff',
+      },
+      '@media(max-width: 340px)': {
+        fontSize: 20,
       }
     },
     h2: {
@@ -50,7 +53,7 @@ export const defaultTheme = createMuiTheme({
       fontSize: 18,
       lineHeight: 1.3,
       fontFamily: fontFamilyH2,
-      color: fontMainColor
+      color: fontMainColor,
     },
     h3: {
       textTransform: 'uppercase',
@@ -58,7 +61,10 @@ export const defaultTheme = createMuiTheme({
       letterSpacing: '0.07em',
       fontFamily: fontFamilyCommon,
       fontSize: 16,
-      color: fontMainColor
+      color: fontMainColor,
+      '@media(max-width: 340px)': {
+        fontSize: 14,
+      }
     },
     h4: {
       fontFamily: fontFamilyCommon,
@@ -116,19 +122,15 @@ export const defaultTheme = createMuiTheme({
           backgroundColor: '#d15a5a',
           color: '#fff'
         },
-        // [th.breakpoints.up('md')]: {
-        //   boxShadow: '0 0 0 0 #fff',
-        // },
         '&:hover': {
           boxShadow: '0 10px 20px 0 rgba(0, 0, 0, 0.2)',
           backgroundColor: '#F1C353',
-          // [th.breakpoints.up('md')]: {
-          //   boxShadow: '0 5px 5px 0 rgba(0, 0, 0, .1) !important',
-          // },
+          transition: 'all 1s ease',
         },
         '&:active': {
           boxShadow: '0 0 0 0 #fff !important',
           backgroundColor: '#F1C353',
+          transition: 'all 1s ease',
         }
       },
       containedPrimary: {
@@ -138,16 +140,18 @@ export const defaultTheme = createMuiTheme({
         color: '#fff'
       },
       outlined: {
-        border: 'transparent',
+        borderColor: '#f1c355',
         color: fontSecondaryColor,
         fontSize: 16,
         '&:active': {
           backgroundColor: fontSecondaryColor,
           color: fontMainColor,
+          transition: 'all 1s ease',
         },
         '&:hover': {
           backgroundColor: fontSecondaryColor,
           color: fontMainColor,
+          transition: 'all 1s ease',
         },
       },
       text: {
@@ -155,18 +159,18 @@ export const defaultTheme = createMuiTheme({
         color: '#fff',
         '&:active': {
           color: fontSecondaryColor,
+          transition: 'all 1s ease',
         },
         '&:hover': {
           color: fontSecondaryColor,
+          transition: 'all 1s ease',
         }
       },
       sizeSmall: {
-        // padding: '15px 25px',
         textTransform: 'none',
         fontSize: 16
       },
       sizeLarge: {
-        // padding: '25px 75px',
         textTransform: 'none',
         fontSize: 18
       }
@@ -195,11 +199,36 @@ export const defaultTheme = createMuiTheme({
     MuiInput: {
       input: {
         fontSize: 18,
-        // marginTop: 48,
-        // [th.breakpoints.up('md')]: {
-        //   marginTop: 8,
-        // }
       }
-    }
+    },
+    MuiListItemIcon: {
+      root: {
+        minWidth: 20
+      }
+    },
+    MuiInputBase: {
+      root: {
+        color: fontLightColor
+      },
+        
+    },
+    MuiFormLabel: {
+      root: {
+        color: fontLightColor
+      }
+    },
+    MuiOutlinedInput: {
+      root: {
+        '&$focused fieldset': {
+          borderColor: `${fontSecondaryColor} !important`,
+          color: '#fff'
+        },
+      },
+      focused: {},
+      notchedOutline: {
+        borderColor: fontMainColor,
+      },
+      
+    },    
   },
 });

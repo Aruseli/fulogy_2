@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 
 import {
   Grid,
@@ -11,10 +11,14 @@ import {
   Logo,
   Light,
   Contacts,
+  OutlinedButton,
   phone,
   ContainedButton,
   TextButton
 } from '../../widgets/small-elements';
+import {FormDialog} from '../../widgets/formDialog';
+
+import { Context as AnaliticsContext } from '../../project/analitics';
 
 const useStyle = makeStyles((theme) => ({
   root: {
@@ -25,7 +29,14 @@ const useStyle = makeStyles((theme) => ({
     backgroundSize: 'cover',
     width: '100%',
     height: '100vh',
-    maxHeight: '160vw'
+    maxHeight: '160vw',
+    overflow: 'hidden'
+  },
+  logoStyle: {
+    width: 150,
+    '@media(max-width: 340px)': {
+      width: 100
+    }
   },
   typographyBody1: {
     color: theme.palette.primary.light
@@ -35,6 +46,9 @@ const useStyle = makeStyles((theme) => ({
     position: 'absolute',
     top: 0,
     right: 0,
+    '@media (min-width: 500px)': {
+      top: 'calc(-100vw - -500px)',
+    },
   }
 }))
 
@@ -43,15 +57,29 @@ export const mobileKit = require('../../../images/mobile-kit.png?resize&size=600
 
 export const MobileOne = () => {
   const classes = useStyle();
+  const { trigger } = useContext(AnaliticsContext);
+  const [dialogOpenLight, setDialogOpenLight] = useState(false);
+  const [dialogOpenCall, setDialogOpenCall] = useState(false);
+
+  const onClickLight = () => {
+    setDialogOpenLight(!dialogOpenLight);
+    trigger('lightRequest1');
+    console.log({trigger});
+  }
+  const onClickCall = () => {
+    setDialogOpenCall(!dialogOpenCall);
+    trigger('callRequest1');
+    console.log({trigger});
+  }
 
   return (
     <>
       <div className={classes.root}>
         <div className={classes.cornerImage}>
-          <img src={mobileKit} alt='fulogy' style={{width: '100%'}} />
-            <Typography variant='h4' component='div' color='primary.light' style={{position: 'absolute', top: '74%', left: '4%'}}>Бесшовный<br />дизайн</Typography>
-            <Typography variant='h4' component='div' color='primary.light' style={{position: 'absolute', top: '87%', left: '16%'}}>Точно в размер<br />Вашей кухни</Typography>
-            <Typography variant='h4' component='div' color='primary.light' style={{position: 'absolute', top: '98%', left: '46%'}}>Установим через<br />72 часа</Typography>
+          <img src={mobileKit} alt='fulogy' style={{width: '100%', transform: 'scale(1.1)'}} />
+            <Typography variant='h4' component='div' style={{position: 'absolute', top: '80%', color: '#fff', left: '4%'}}>Бесшовный<br />дизайн</Typography>
+            <Typography variant='h4' component='div' style={{position: 'absolute', top: '93%', color: '#fff', left: '15%'}}>Точно в размер<br />Вашей кухни</Typography>
+            <Typography variant='h4' component='div' style={{position: 'absolute', top: '102%', color: '#fff', left: '46%'}}>Установим через<br /><span style={{color: '#f1c355'}}>72</span> часа</Typography>
         </div>
         <Grid 
           container
@@ -62,26 +90,28 @@ export const MobileOne = () => {
             top: 0,
             left: 0,
             width: '100%',
-            paddingTop: 16
+            paddingTop: 8,
+            paddingLeft: 16,
+            paddingRight: 16
           }}
         >
           <Grid item>
-            <Logo width='150' />
+            <Logo className={classes.logoStyle} />
           </Grid>
           <Grid item>
-            <Contacts icon={<img src={phone} alt='контакты fulogy' style={{width: 16}} />} style={{position: 'relative', left: 48}}/>
+            <Contacts onClick={onClickCall} />
           </Grid>
-          <Grid item xs={12} style={{marginTop: 60}}>
+          <Grid item xs={12} style={{marginTop: 40}}>
             <Light />
           </Grid>
-          <Grid item xs={12} style={{marginTop: 32}}>
+          <Grid item xs={12} style={{marginTop: 24}}>
             <Typography variant='h1' component='h1' style={{color: '#fff'}} align='center'>ровный&ensp;<Typography variant='h1' component='span' color='secondary'>яркий</Typography>&ensp;свет</Typography>
             <Typography variant='h3' component='h2' style={{color: '#fff', marginTop: 8}} align='center'>над рабочим столом по<br />взмаху руки</Typography>
           </Grid>
         </Grid>
         <div style={{position: 'absolute', bottom: 24, left: 16}}>
-          <ContainedButton />
-          <TextButton style={{marginLeft: 32}}/>
+          <ContainedButton onClick={onClickLight} />
+          <TextButton style={{marginLeft: 32}} href='#pageLinkMob'>Узнать больше</TextButton>
         </div>
       </div>
       <Container style={{
@@ -99,6 +129,20 @@ export const MobileOne = () => {
           позволяющий установить светильники с точностью до миллиметра и без швов между ними, подчеркнет индивидуальность Вашей кухни.
         </Typography>
       </Container>
+      <FormDialog
+        open={dialogOpenLight}
+        onClose={() => setDialogOpenLight(!dialogOpenLight)}
+        title='Чтобы заказать светильники'
+        button='Заказать светильники'
+        onSubmit={() => trigger('lightThanks1')}
+      />
+       <FormDialog
+        open={dialogOpenCall}
+        onClose={() => setDialogOpenCall(!dialogOpenCall)}
+        title='Чтобы заказать звонок'
+        button='Заказать звонок'
+        onSubmit={() => trigger('callThanks1')}
+      />
     </>
   )
 }
