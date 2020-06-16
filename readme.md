@@ -1,7 +1,3 @@
-# Demo
-https://aruseli-fulogy-2.herokuapp.com/
-Heroka hosting wakes up for about a minute
-
 # react-web-app
 
 - [x] draft of auth
