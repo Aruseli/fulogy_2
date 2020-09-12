@@ -35,7 +35,7 @@
     "flow": "^0.2.3",
     "flow-bin": "^0.112.0",
     "graphql": "^14.5.8",
-    "http-proxy": "^1.18.0",
+    "http-proxy": "^1.18.1",
     "image-trace-loader": "^0.1.0",
     "imagemin-gifsicle": "^6.0.1",
     "imagemin-mozjpeg": "^8.0.0",
