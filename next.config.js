@@ -25,9 +25,7 @@ module.exports = withPlugins(
     }],
   ],
   {
-    ...(process.env.GITHUB_REPOSITORY ? {
-      basePath: `/${process.env.GITHUB_REPOSITORY.split('/')[1]}`,
-    } : {}),
+    basePath: `/fulogy_2`,
     webpack: config => {
       config.plugins = config.plugins || []
   
