@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "next -p $PORT",
     "build": "next build",
-    "export": "npm build && next export -o docs",
+    "export": "npm run build && next export -o docs",
     "start": "next start -p $PORT",
     "add-android": "ionic cap add android",
     "open-android": "ionic cap open android",
