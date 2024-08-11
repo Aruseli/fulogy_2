@@ -41,6 +41,6 @@ module.exports = withPlugins(
   
       return config;
     },
-    assetPrefix: process.env.PATH_PREFIX ? `/${process.env.PATH_PREFIX}` : '',
+    assetPrefix: process.env.PATH_PREFIX ? `${process.env.PATH_PREFIX}` : '',
   },
 );
