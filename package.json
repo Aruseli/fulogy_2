@@ -4,6 +4,7 @@
     "dev": "next -p $PORT",
     "build": "next build",
     "export": "npm run build && next export -o docs",
+    "gh-pages": "PATH_PREFIX=\"/fulogy_2\" npm run export",
     "start": "next start -p $PORT",
     "add-android": "ionic cap add android",
     "open-android": "ionic cap open android",

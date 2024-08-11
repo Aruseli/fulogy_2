@@ -25,7 +25,6 @@ module.exports = withPlugins(
     }],
   ],
   {
-    basePath: `/fulogy_2`,
     webpack: config => {
       config.plugins = config.plugins || []
   
